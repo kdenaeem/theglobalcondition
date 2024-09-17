@@ -6,6 +6,8 @@ import pyshorteners
 from country_list import countries
 import time
 
+
+
 def fetchNewsArticle(country):
     headers = {
         "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3",
@@ -66,7 +68,3 @@ def fetchNewsArticle(country):
         article_count += 1
 
     return json.dumps(results, indent=4)
-
-for country in countries:
-  
-  print(fetchNewsArticle(country))

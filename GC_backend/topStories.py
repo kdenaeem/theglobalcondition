@@ -5,6 +5,8 @@ import datetime
 import pyshorteners
 from country_list import countries
 import time
+import geograpy
+
 
 def fetchNewsArticle(country):
     headers = {
@@ -49,9 +51,7 @@ def fetchNewsArticle(country):
             publication_time = time_element['datetime']
             dt = datetime.datetime.fromisoformat(publication_time.replace('Z', '+00:00'))
             time_str = dt.strftime('%H:%M:%S')
-
             publication_datetime = datetime.datetime.fromisoformat(publication_time)
-            
             mainArticle = {
                 "country": country,
                 "title": title,
@@ -62,12 +62,16 @@ def fetchNewsArticle(country):
                 "time": time_str
             }
             results.append(mainArticle)
-        
         article_count += 1
 
     return json.dumps(results, indent=4)
 
 print(fetchNewsArticle('country'))
+# 
+url = 'https://news.sky.com/story/whats-the-future-of-hamas-under-new-leader-yahya-sinwar-13192422'
+
+
+
 
 # for country in countries:
 #     time.sleep(3)
